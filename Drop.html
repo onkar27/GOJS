@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Problem</title>
+	<script type="text/javascript">
+		function fun(){
+			var lang = document.getElementById('Lang').value;
+			editor.session.setMode("ace/mode/"+lang);
+			alert(editor.getValue());
+		}
+		function submitcode(){
+			var code = editor.getValue();
+			document.getElementById('textArea').style.display = "block";
+		    document.getElementById('textArea').value=code;
+		    document.getElementById("divdata").submit();
+		}
+	</script>
+</head>
+<body>
+<form action="SubmitMyCode" name="code" method="POST">
+<label>Enter your code here</label>
+<select id="Lang" onchange="fun()" name="Lang">
+	<option value="c_cpp">C (4.5.1)</option>
+	<option value="c_cpp">C++ (4.5.0)</option>
+	<option value="java" >Java</option>
+	<option value="python">Python</option>
+</select><hr>
+<div id="editor">
+</div>
+<input type=hidden id="textArea" name=textArea><hr>
+<input type="submit" onclick="submitcode()" value="Submit">
+<pre name="Out"></pre>
+</form>
+<script src="Code Editor/src/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+	var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/twilight");
+    editor.session.setMode("ace/mode/c_cpp");
+	editor.setOptions({
+		maxLines: 100,
+		minLines: 20,
+		autoScrollEditorIntoView: true        
+	});
+	editor.renderer.setScrollMargin(10, 10, 10, 10);
+	editor.setValue("#include <stdio.h>\nint main(){\n\tprintf(\"Hello\");\n}");
+</script>	
+</body>
+</html>
