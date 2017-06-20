@@ -14,14 +14,19 @@
 		    document.getElementById("divdata").submit();
 		}
 	</script>
+	<srcipt>
+		div{
+		display: inline;
+		}
+		</script>
 </head>
 <body>
 <form action="SubmitMyCode" name="code" method="POST">
-<div class="row">
-	<div class="align-left" style:display : inline-block;>
+<div >
+	<div >
 		<label>Enter your code here</label>
 	</div>
-	<div class="align-right" style:display : inline-block;>
+	<div >
 		<select id="Lang" onchange="fun()" name="Lang">
 			<option value="c_cpp">C (4.5.1)</option>
 			<option value="c_cpp">C++ (4.5.0)</option>
