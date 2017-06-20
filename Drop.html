@@ -17,16 +17,18 @@
 </head>
 <body>
 <form action="SubmitMyCode" name="code" method="POST">
-<div class="col-md-6 col-xs-6">
-<label>Enter your code here</label>
-</div>
-<div class="col-md-6 col-xs-6">
-<select id="Lang" onchange="fun()" name="Lang">
-	<option value="c_cpp">C (4.5.1)</option>
-	<option value="c_cpp">C++ (4.5.0)</option>
-	<option value="java" >Java</option>
-	<option value="python">Python</option>
-</select>
+<div class="row">
+	<div class="col-md-6 col-xs-6">
+		<label>Enter your code here</label>
+	</div>
+	<div class="col-md-6 col-xs-6">
+		<select id="Lang" onchange="fun()" name="Lang">
+			<option value="c_cpp">C (4.5.1)</option>
+			<option value="c_cpp">C++ (4.5.0)</option>
+			<option value="java" >Java</option>
+			<option value="python">Python</option>
+		</select>
+	</div>
 </div>
 <hr>
 <div id="editor">
