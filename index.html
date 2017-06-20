@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/user.css">
+    <link rel="stylesheet" href="dist/css/bootstrap-select.css">
+
+    <script type="text/javascript">
+        function fun(){
+            var lang = document.getElementById('Lang').value;
+            editor.session.setMode("ace/mode/"+lang);
+        }
+        function submitcode(){
+            var code = editor.getValue();
+            document.getElementById('textArea').style.display = "block";
+            document.getElementById('textArea').value=code;
+            document.getElementById("divdata").submit();
+        }
+    </script>
+</head>
+
+<body>
+    <form method="POST" action="SubmitMyCode">
+        <div class="container-fluid">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-7">
+                                <h5>Enter your code here:</h5></div>
+                            <div class="col-lg-6 col-lg-offset-0 col-md-6 col-md-offset-0 col-sm-6 col-sm-offset-0 col-xs-5 col-xs-offset-0">
+                                <select id="Lang" onchange="fun()" name="Lang" class="selectpicker" data-hide-disabled="true" data-live-search="true">
+                                    <option value="c_cpp">C (4.5.1)</option>
+                                    <option value="c_cpp">C++ (4.5.0)</option>
+                                    <option value="java" >Java</option>
+                                    <option value="python">Python</option>
+                                  </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="col-md-12 col-xs-12">
+                        <div id="editor">
+                        </div>
+                        <input type=hidden id="textArea" name=textArea>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-lg-1 col-md-1 col-md-offset-0 col-sm-1 col-xs-3">
+                            <input class="btn btn-default" type="submit" onclick="submitcode()" value="Run">
+                        </div>
+                            <button class="btn btn-default" type="submit">Button</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="text" name="done" value='<%=request.getAttribute("TextValue")%>'/> 
+    </form>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="dist/js/bootstrap-select.js"></script>
+
+<script src="Code Editor/src/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/twilight");
+    editor.session.setMode("ace/mode/c_cpp");
+    editor.setOptions({
+        maxLines: 100,
+        minLines: 20,
+        autoScrollEditorIntoView: true        
+    });
+    editor.renderer.setScrollMargin(10, 10, 10, 10);
+    editor.setValue("#include <stdio.h>\nint main(){\n\tprintf(\"Hello\");\n}");
+</script>   
+
+</body>
+
+</html>
