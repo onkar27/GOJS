@@ -6,7 +6,6 @@
 		function fun(){
 			var lang = document.getElementById('Lang').value;
 			editor.session.setMode("ace/mode/"+lang);
-			alert(editor.getValue());
 		}
 		function submitcode(){
 			var code = editor.getValue();
